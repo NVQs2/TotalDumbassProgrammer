@@ -25,9 +25,11 @@ worksheet = workbook.sheet_by_name('Term Dates')
 # Find way to convert month to number from 1-12 - list.index() function:
 monthlist = ["Don't want index() returning 0 so here's a placeholder", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-# Variable from denoting if term or break (and which) - I have a hunch I'll need these later:
+# Variable for denoting if term or break (and which) - I have a hunch I'll need these later:
 term = 0
 notterm = 0
+
+days = 0
 
 # Current year's terms (pulled from excel file using xlrd module):
 # Term 1:
@@ -74,7 +76,7 @@ t6monthend = monthlist.index(worksheet.cell(7,5).value)
 t6yearend = worksheet.cell(7, 6).value
 
 # Stating who made it and when
-print("Written by Michael Carnall: 5/12/2019 - 21/1/2020\n")
+print("Written by Michael Carnall: 5/12/2019 - 5/3/2020\n")
 
 # State current time and date:
 print("The time is " + str(hour) + ":" + str(minute) + ":" + str(second) +
@@ -121,31 +123,42 @@ else:    # Summer (or other)
 # If term is not 0, state how long till end of term [(Term end date - current date) in days]
 if term > 0:
     if term == 1:     # Days till end of term 1
-        print ("There are " + str((datetime.date(int(t1yearend), int(t1monthend), int(t1dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t1yearend), int(t1monthend), int(t1dayend)) - today).days
+        print ("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif term == 2:   # Days till end of term 2
-        print ("There are " + str((datetime.date(int(t2yearend), int(t2monthend), int(t2dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t2yearend), int(t2monthend), int(t2dayend)) - today).days
+        print ("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif term == 3:   # Days till end of term 3
-        print("There are " + str((datetime.date(int(t3yearend), int(t3monthend), int(t3dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t3yearend), int(t3monthend), int(t3dayend)) - today).days
+        print("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif term == 4:   # Days till end of term 4
-        print ("There are " + str((datetime.date(int(t4yearend), int(t4monthend), int(t4dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t4yearend), int(t4monthend), int(t4dayend)) - today).days
+        print ("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif term == 5:   # Days till end of term 5
-        print ("There are " + str((datetime.date(int(t5yearend), int(t5monthend), int(t5dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t5yearend), int(t5monthend), int(t5dayend)) - today).days
+        print ("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif term == 6:   # Days till end of term 6
-        print ("There are " + str((datetime.date(int(t6yearend), int(t6monthend), int(t6dayend)) - today).days) + " days until the end of term")
+        days = (datetime.date(int(t6yearend), int(t6monthend), int(t6dayend)) - today).days
+        print ("There are " + str(days) + " days until the end of term (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     else:   # Absurdly unlikely, but there is a non-zero chance it might occur
         print("Something's clearly gone wrong here, the term variable shouldn't go higher than 6")
 # If notterm is not 0, state how long till next term (and what term it will be)
 elif notterm > 0:
     if notterm == 1:      # Days till start of term 2
-        print ("There are " + str((datetime.date(int(t2yearstart), int(t2monthstart), int(t2daystart)) - today).days) + " days until the start of term 2")
+        days = (datetime.date(int(t2yearstart), int(t2monthstart), int(t2daystart)) - today).days
+        print ("There are " + str(days) + " days until the start of term 2 (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif notterm == 2:    # Days till start of term 3
-        print ("There are " + str((datetime.date(int(t3yearstart), int(t3monthstart), int(t3daystart)) - today).days) + " days until the start of term 3")
+        days = (datetime.date(int(t3yearstart), int(t3monthstart), int(t3daystart)) - today).days
+        print ("There are " + str(days) + " days until the start of term 3 (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif notterm == 3:    # Days till start of term 4
-        print ("There are " + str((datetime.date(int(t4yearstart), int(t4monthstart), int(t4daystart)) - today).days) + " days until the start of term 4")
+        days = (datetime.date(int(t4yearstart), int(t4monthstart), int(t4daystart)) - today).days
+        print ("There are " + str(days) + " days until the start of term 4 (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif notterm == 4:    # Days till start of term 5
-        print ("There are " + str((datetime.date(int(t5yearstart), int(t5monthstart), int(t5daystart)) - today).days) + " days until the start of term 5")
+        days = (datetime.date(int(t5yearstart), int(t5monthstart), int(t5daystart)) - today).days
+        print ("There are " + str(days) + " days until the start of term 5 (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     elif notterm == 5:    # Days till start of term 6
-        print ("There are " + str((datetime.date(int(t6yearstart), int(t6monthstart), int(t6daystart)) - today).days) + " days until the start of term 6")
+        days = (datetime.date(int(t6yearstart), int(t6monthstart), int(t6daystart)) - today).days
+        print ("There are " + str(days) + " days until the start of term 6 (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
     else:   # Absurdly unlikely, but there is a non-zero chance it might occur
         print("Something's clearly gone wrong here, the notterm variable shouldn't go higher than 5")
 else:   # Either something's wrong or anything else is summer break
@@ -153,7 +166,8 @@ else:   # Either something's wrong or anything else is summer break
 
 # Countdown till end of academic year
 if term != 0 or notterm != 0:   #Check that they are actually in academic year
-    print ("There are " + str((datetime.date(int(t6yearend), int(t6monthend), int(t6dayend)) - today).days) + " days until the end of the academic year")
+    days = (datetime.date(int(t6yearend), int(t6monthend), int(t6dayend)) - today).days
+    print ("There are " + str(days) + " days until the end of the academic year (" + str(days // 7) + " weeks " + str(days % 7) + " days)")
 else:   # Either something's wrong or anything else is outsied of the academic year
     print("See you next year")
 
